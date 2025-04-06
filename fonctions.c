@@ -1,3 +1,4 @@
+#include <stdio.h>
 //definition de la procedure quib permet de vider le buffer
 void viderBuffer(void) {
     int c;
