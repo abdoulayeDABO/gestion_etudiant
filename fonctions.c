@@ -1,8 +1,12 @@
 
 // # la fonction afficherEtudiantRandom()
+#include <stdio.h>
+#include <string.h>
+#include "etudiants.h"
 #include <stdlib.h>
 #include <time.h>
 
+// Fonction pour Afficher un étudiant aléatoire
 void afficherEtudiantRandom(const Etudiant tab[], int n) {
     if (n == 0) {
         printf("Aucun étudiant dans la liste.\n");
