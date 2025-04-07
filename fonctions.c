@@ -1,4 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "fonctions.h"
+#define NBETU 100
+
+
+
 //definition de la procedure quib permet de vider le buffer
 void viderBuffer(void) {
     int c;
@@ -12,7 +19,7 @@ void sauvegarderListe(Etudiant *liste[], const char *nomFichier) {
     FILE *fichier = fopen(nomFichier, "w");
     if (!fichier) {
         perror("Erreur lors de l'ouverture du fichier de sauvegarde");
-        return -1;
+        return;
     }
 
     for (int i = 0; i < NBETU; i++) {
@@ -31,7 +38,7 @@ void afficherListe(Etudiant *liste[]){
 for (int i = 0; i < 100; i++){
     if (liste[i] == NULL) continue;
     printf ("\nle numero : %d\nle nom :%s\nla note : %.3f\n", liste[i]->numero, liste[i]->nom, liste[i]->note);
-    printf("++++++++++++++++++++++++++++++++++++");
+    printf("++++++++++++++++++++++++++++++++++++\n");
   }
 }
 
@@ -50,7 +57,7 @@ void nettoyerMemoire(Etudiant *liste[]){
 //oú positionner le nouveau etudiant
 int trouverIndex(Etudiant *liste[]){
  for (int i = 0 ; i < 100; i++){
- if(liste[i] == NULL) return i;
+  if(liste[i] == NULL) return i;
  }
  
  printf("Le nombre maximum d'etudiants est atteint.\n");
@@ -69,7 +76,7 @@ void ajouterEtudiant (Etudiant *liste[], int position, int numero, char *nom, fl
 }
 
 //dialogue entre le programme et l'utilisateur pour inserer l'etudiant dans la liste
-void saisirEtudiant(){
+void saisirEtudiant(Etudiant *VETU[]){
   int numero = -1;
   char nom[255];
   char *nomP = NULL;
@@ -130,7 +137,7 @@ void supprimer(Etudiant *liste[], int position){
 }
 
 //dialogue afin de supprimer l'etudiant
-void supprimerEtudiant(){
+void supprimerEtudiant(Etudiant *VETU[]){
 
   printf("+-----------------------------+\n");
   printf("| Suppression d'un Etudiant : |\n");
@@ -146,7 +153,7 @@ void supprimerEtudiant(){
 void restaurerListe(Etudiant *liste[], const char *nomFichier) {
     FILE *fichier = fopen(nomFichier, "r");
     if (!fichier) {
-        return -1;
+        return ;
     }
 
     char ligne[256];
