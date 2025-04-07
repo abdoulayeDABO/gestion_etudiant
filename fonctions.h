@@ -2,6 +2,7 @@
 #define FONCTION_A_INCLURE
 
 //definition d'un type qui donne le numero, le nom et la note de l'etudiant
+
 typedef struct {
   int numero;
   char *nom;
@@ -27,7 +28,7 @@ int trouverIndex(Etudiant *liste[]);
 void ajouterEtudiant (Etudiant *liste[], int position, int numero, char *nom, float note);
 
 //une procedure qui permet de dialoguer afin d'obtenir les informations du nouveau etudiant
-void saisirEtudiant();
+void saisirEtudiant(Etudiant *VETU[]);
 
 //cette fonction permet de trouver l'emplacement de l'etudiant qu'on veut supprimer
 int supprimerIndex(Etudiant *liste[], int numero);
@@ -36,7 +37,7 @@ int supprimerIndex(Etudiant *liste[], int numero);
 void supprimer(Etudiant *liste[], int position);
 
 //cette procedure permet de dialoguer pour obtenir les informations de l'etudiant qu'on veut supprimer
-void supprimerEtudiant();
+void supprimerEtudiant(Etudiant *VETU[]);
 
 
 //cette procedure permet de restaurer les informations de la derniere executions
