@@ -7,10 +7,24 @@ int main() {
     return 0;
 }
 
-printf("8. Afficher un étudiant aléatoire\n");
-printf("0. Quitter\n");
+// La Fonction AfficherEtudiantRandom()
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include "etudiants.h"
+#include "supermat.h"
+int main() {
+    Etudiant tab[MAX_ETUDIANTS];
+    int n = 0;
+    int choix, numero;
+
+    do {
+        printf("\n===== Menu Etudiants =====\n");
+        printf("8. Afficher un étudiant aléatoire\n");
+        printf("0. Quitter\n");
         printf("Votre choix : ");
         scanf("%d", &choix);
+
 
         switch (choix) {
            case 8:
