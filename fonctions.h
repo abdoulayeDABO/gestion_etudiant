@@ -3,9 +3,9 @@
 
 // Déclarations des structures
 typedef struct {
-    int numero;   // Numéro de l'étudiant
-    char nom[50]; // Nom de l'étudiant
-    float note;   // Note de l'étudiant
+    int numero;
+    char nom[50];
+    float note;
 } Etudiant;
 
 // Déclaration de la fonction afficherEtudiantsParMerite
