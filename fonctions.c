@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "fonction.h"
+#define NBETU 100
 
 void afficherEtudiantsParMerite(Etudiant VETU[], int SUIVANT[], int NBETU) {
     int i = 0;
