@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "fonction.h"
 
 void afficherEtudiantsParMerite(Etudiant VETU[], int SUIVANT[], int NBETU) {
