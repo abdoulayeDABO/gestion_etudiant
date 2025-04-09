@@ -136,36 +136,79 @@ void restaurer_donnees(Etudiant VETU[], int *NBETU) {
     printf("Données restaurées avec succès.\n");
 }
 
-void trier_par_nom(Etudiant VETU[], int NBETU) {
+// void trier_par_nom(Etudiant VETU[], int NBETU) {
+//     for (int i = 0; i < NBETU - 1; i++) {
+//         for (int j = i + 1; j < NBETU; j++) {
+//             if (strcmp(VETU[i].nom, VETU[j].nom) > 0) {
+//                 Etudiant temp = VETU[i];
+//                 VETU[i] = VETU[j];
+//                 VETU[j] = temp;
+//             }
+//         }
+//     }
+// }
+
+// void trier_par_note(Etudiant VETU[], int NBETU) {
+//     for (int i = 0; i < NBETU - 1; i++) {
+//         for (int j = i + 1; j < NBETU; j++) {
+//             if (VETU[i].note < VETU[j].note) {
+//                 Etudiant temp = VETU[i];
+//                 VETU[i] = VETU[j];
+//                 VETU[j] = temp;
+//             }
+//         }
+//     }
+// }
+
+// void trier_aleatoire(Etudiant VETU[], int NBETU) {
+//     srand(time(NULL));
+//     for (int i = NBETU - 1; i > 0; i--) {
+//         int j = rand() % (i + 1);
+//         Etudiant temp = VETU[i];
+//         VETU[i] = VETU[j];
+//         VETU[j] = temp;
+//     }
+// }
+
+
+void trier_indices_par_nom(int indices[], Etudiant VETU[], int NBETU) {
     for (int i = 0; i < NBETU - 1; i++) {
         for (int j = i + 1; j < NBETU; j++) {
-            if (strcmp(VETU[i].nom, VETU[j].nom) > 0) {
-                Etudiant temp = VETU[i];
-                VETU[i] = VETU[j];
-                VETU[j] = temp;
+            if (strcmp(VETU[indices[i]].nom, VETU[indices[j]].nom) > 0) {
+                int temp = indices[i];
+                indices[i] = indices[j];
+                indices[j] = temp;
             }
         }
     }
 }
 
-void trier_par_note(Etudiant VETU[], int NBETU) {
+void trier_indices_par_note(int indices[], Etudiant VETU[], int NBETU) {
     for (int i = 0; i < NBETU - 1; i++) {
         for (int j = i + 1; j < NBETU; j++) {
-            if (VETU[i].note < VETU[j].note) {
-                Etudiant temp = VETU[i];
-                VETU[i] = VETU[j];
-                VETU[j] = temp;
+            if (VETU[indices[i]].note < VETU[indices[j]].note) {
+                int temp = indices[i];
+                indices[i] = indices[j];
+                indices[j] = temp;
             }
         }
     }
 }
 
-void trier_aleatoire(Etudiant VETU[], int NBETU) {
+void trier_indices_aleatoire(int indices[], int NBETU) {
     srand(time(NULL));
     for (int i = NBETU - 1; i > 0; i--) {
         int j = rand() % (i + 1);
-        Etudiant temp = VETU[i];
-        VETU[i] = VETU[j];
-        VETU[j] = temp;
+        int temp = indices[i];
+        indices[i] = indices[j];
+        indices[j] = temp;
+    }
+}
+
+void afficher_etudiants_tries(Etudiant VETU[], int indices[], int NBETU) {
+    printf("Liste des étudiants triés:\n");
+    for (int i = 0; i < NBETU; i++) {
+        int index = indices[i];
+        printf("Numéro: %d, Nom: %s, Note: %d\n", VETU[index].numero, VETU[index].nom, VETU[index].note);
     }
 }

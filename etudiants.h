@@ -26,9 +26,15 @@ void ajouter_etudiant(Etudiant VETU[], int *NBETU);
 void supprimer_etudiant(Etudiant VETU[], int *NBETU, int numero);
 void sauvegarder_donnees(Etudiant VETU[], int NBETU);
 void restaurer_donnees(Etudiant VETU[], int *NBETU);
-void trier_par_nom(Etudiant VETU[], int NBETU);
-void trier_par_note(Etudiant VETU[], int NBETU);
-void trier_aleatoire(Etudiant VETU[], int NBETU);
+// void trier_par_nom(Etudiant VETU[], int NBETU);
+// void trier_par_note(Etudiant VETU[], int NBETU);
+// void trier_aleatoire(Etudiant VETU[], int NBETU);
+
+void trier_indices_par_nom(int indices[], Etudiant VETU[], int NBETU);
+void trier_indices_par_note(int indices[], Etudiant VETU[], int NBETU);
+void trier_indices_aleatoire(int indices[], int NBETU);
+void afficher_etudiants_tries(Etudiant VETU[], int indices[], int NBETU);
 
 #endif
+
 
