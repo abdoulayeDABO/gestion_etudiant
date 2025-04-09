@@ -16,17 +16,17 @@ int main() {
 
     do {
         printf("\nMenu:\n");
-        printf("1. Saisir les étudiants\n");
-        printf("2. Ajouter un étudiant\n");
-        printf("3. Supprimer un étudiant\n");
-        printf("4. Afficher les étudiants\n");
+        printf("1. Saisir les etudiants\n");
+        printf("2. Ajouter un etudiant\n");
+        printf("3. Supprimer un etudiant\n");
+        printf("4. Afficher les etudiants\n");
         printf("5. Quitter\n");
         printf("Choisissez une option: ");
         scanf("%d", &choix);
 
         switch (choix) {
             case 1:
-                printf("Entrez le nombre d'étudiants: ");
+                printf("Entrez le nombre d'etudiants: ");
                 scanf("%d", &NBETU);
                 saisir_etudiants(VETU, NBETU);
                 break;
@@ -34,15 +34,15 @@ int main() {
                 ajouter_etudiant(VETU, &NBETU);
                 break;
             case 3:
-                printf("Entrez le numéro de l'étudiant à supprimer: ");
+                printf("Entrez le numero de l'etudiant à supprimer: ");
                 scanf("%d", &numero);
                 supprimer_etudiant(VETU, &NBETU, numero);
                 break;
             case 4:
                 printf("Choisissez l'ordre d'affichage:\n");
-                printf("1. Alphabétique\n");
-                printf("2. Mérite\n");
-                printf("3. Aléatoire\n");
+                printf("1. Alphabetique\n");
+                printf("2. Merite\n");
+                printf("3. Aleatoire\n");
                 printf("Entrez votre choix: ");
                 scanf("%d", &ordre);
 
@@ -57,7 +57,7 @@ int main() {
                         trier_aleatoire(VETU, NBETU);
                         break;
                     default:
-                        printf("Option invalide. Affichage par défaut.\n");
+                        printf("Option invalide. Affichage par defaut.\n");
                 }
 
                 afficher_etudiants(VETU, NBETU);
@@ -67,7 +67,7 @@ int main() {
                 printf("Au revoir!\n");
                 break;
             default:
-                printf("Option invalide. Veuillez réessayer.\n");
+                printf("Option invalide. Veuillez reessayer.\n");
         }
     } while (choix != 5);
 
