@@ -11,3 +11,6 @@ typedef struct {
 // Déclaration de la fonction afficherEtudiantsParMerite
 void afficherEtudiantsParMerite(Etudiant VETU[], int SUIVANT[], int NBETU);
 #endif
+// Déclaration de la fonction ChargerEtudiants
+void ChargerEtudiants(Etudiant VETU[], int SUIVANT[], int* NBETU);
+
