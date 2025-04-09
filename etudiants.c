@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-
-
-#define MAX_ETUDIANTS 100
+#include "etudiants.h"
 
 
 void saisir_etudiants(Etudiant VETU[], int NBETU) {
@@ -59,6 +57,18 @@ void afficher_resultats(Etudiant VETU[], int SUIVANT[], int DEB) {
     }
 }
 
+
+void afficher_etudiants(Etudiant VETU[], int NBETU) {
+    printf("\nListe des étudiants:\n");
+    printf("-------------------\n");
+    for (int i = 0; i < NBETU; i++) {
+        printf("Étudiant %d:\n", i + 1);
+        printf("  Numéro: %d\n", VETU[i].numero);
+        printf("  Nom: %s\n", VETU[i].nom);
+        printf("  Note: %d\n", VETU[i].note);
+        printf("-------------------\n");
+    }
+}
 
 void ajouter_etudiant(Etudiant VETU[], int *NBETU) {
     if (*NBETU >= MAX_ETUDIANTS) {
