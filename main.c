@@ -7,9 +7,10 @@
 
 int main() {
     Etudiant VETU[MAX_ETUDIANTS];
-    int NBETU;
+    int NBETU = 0;
     int SUIVANT[MAX_ETUDIANTS];
     int DEB;
+    int nb_ajout;
     int choix, numero, ordre;
 
     restaurer_donnees(VETU, &NBETU);
@@ -27,14 +28,14 @@ int main() {
         switch (choix) {
             case 1:
                 printf("Entrez le nombre d'etudiants: ");
-                scanf("%d", &NBETU);
-                saisir_etudiants(VETU, NBETU);
+                scanf("%d", &nb_ajout);
+                saisir_etudiants(VETU, nb_ajout, &NBETU);
                 break;
             case 2:
                 ajouter_etudiant(VETU, &NBETU);
                 break;
             case 3:
-                printf("Entrez le numero de l'etudiant à supprimer: ");
+                printf("Entrez le numero de l'etudiant a supprimer: ");
                 scanf("%d", &numero);
                 supprimer_etudiant(VETU, &NBETU, numero);
                 break;

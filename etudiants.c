@@ -3,15 +3,17 @@
 #include "etudiants.h"
 
 
-void saisir_etudiants(Etudiant VETU[], int NBETU) {
-    for (int i = 0; i < NBETU; i++) {
-        printf("Entrez les informations de l'étudiant %d:\n", i + 1);
-        printf("Numéro: ");
-        scanf("%d", &VETU[i].numero);
-        printf("Nom: ");
-        scanf("%s", VETU[i].nom);
-        printf("Note: ");
-        scanf("%d", &VETU[i].note);
+void saisir_etudiants(Etudiant VETU[], int nb_ajout, int *NBETU) {
+    int nb_place_dispo = MAX_ETUDIANTS - *NBETU;
+    if (nb_ajout < 0 || nb_ajout > MAX_ETUDIANTS || nb_ajout > nb_place_dispo) {
+        printf("Erreur !\n");
+        printf("  - Nombre de place disponible: %d\n", MAX_ETUDIANTS - *NBETU);
+        printf("  - Le nombre d'etudiants doit etre compris entre 0 et %d.\n", MAX_ETUDIANTS);
+        printf("  - Le nombre d'etudiants depasse la limite autorisee.\n");
+        return;
+    }
+    for (int i = *NBETU; i < nb_ajout; i++) {
+        ajouter_etudiant(VETU, NBETU);
     }
 }
 
@@ -51,7 +53,7 @@ void afficher_resultats(Etudiant VETU[], int SUIVANT[], int DEB) {
 
     printf("Classement par ordre de mérite:\n");
     while (current != -1) {
-        printf("%d. Numéro: %d, Nom: %s, Note: %d\n", rank, VETU[current].numero, VETU[current].nom, VETU[current].note);
+        printf("%d. Numero: %d, Nom: %s, Note: %d\n", rank, VETU[current].numero, VETU[current].nom, VETU[current].note);
         current = SUIVANT[current];
         rank++;
     }
@@ -59,11 +61,13 @@ void afficher_resultats(Etudiant VETU[], int SUIVANT[], int DEB) {
 
 
 void afficher_etudiants(Etudiant VETU[], int NBETU) {
-    printf("\nListe des étudiants:\n");
+
+    printf("\nListe des etudiants:\n");
+    printf("Effectif total: %d\n", NBETU);
     printf("-------------------\n");
     for (int i = 0; i < NBETU; i++) {
-        printf("Étudiant %d:\n", i + 1);
-        printf("  Numéro: %d\n", VETU[i].numero);
+        printf("Etudiant %d:\n", i + 1);
+        printf("  Numero: %d\n", VETU[i].numero);
         printf("  Nom: %s\n", VETU[i].nom);
         printf("  Note: %d\n", VETU[i].note);
         printf("-------------------\n");
@@ -72,21 +76,25 @@ void afficher_etudiants(Etudiant VETU[], int NBETU) {
 
 void ajouter_etudiant(Etudiant VETU[], int *NBETU) {
     if (*NBETU >= MAX_ETUDIANTS) {
-        printf("Impossible d'ajouter un étudiant. La liste est pleine.\n");
+        printf("Impossible d'ajouter un etudiant. La liste est pleine.\n");
         return;
     }
-
-    printf("Entrez les informations du nouvel étudiant:\n");
-    printf("Numéro: ");
+    printf("Entrez les informations du nouvel etudiant:\n");
+    printf("Numero: ");
     scanf("%d", &VETU[*NBETU].numero);
     printf("Nom: ");
     scanf("%s", VETU[*NBETU].nom);
     printf("Note: ");
     scanf("%d", &VETU[*NBETU].note);
-
+    while(VETU[*NBETU].note < 0 || VETU[*NBETU].note > 20)
+    {
+        printf("Entrez la note de l'etudiant (0-20): ");
+        scanf("%d", &VETU[*NBETU].note);
+    }
+    printf("Etudiant ajoute avec succes.\n");
     (*NBETU)++;
+    printf("Nombre total d'etudiants: %d\n", *NBETU);
 }
-
 
 void supprimer_etudiant(Etudiant VETU[], int *NBETU, int numero) {
     int index = -1;
@@ -98,7 +106,7 @@ void supprimer_etudiant(Etudiant VETU[], int *NBETU, int numero) {
     }
 
     if (index == -1) {
-        printf("Étudiant avec le numéro %d non trouvé.\n", numero);
+        printf("Etudiant avec le numero %d non trouve.\n", numero);
         return;
     }
 
@@ -118,13 +126,13 @@ void sauvegarder_donnees(Etudiant VETU[], int NBETU) {
     fwrite(VETU, sizeof(Etudiant), NBETU, fichier);
 
     fclose(fichier);
-    printf("Données sauvegardées avec succès.\n");
+    printf("Donnees sauvegardees avec succes.\n");
 }
 
 void restaurer_donnees(Etudiant VETU[], int *NBETU) {
     FILE *fichier = fopen(FICHIER_SAUVEGARDE, "rb");
     if (fichier == NULL) {
-        printf("Aucun fichier de sauvegarde trouvé. Commencement avec une nouvelle liste.\n");
+        printf("Aucun fichier de sauvegarde trouve. Commencement avec une nouvelle liste.\n");
         *NBETU = 0;
         return;
     }
@@ -133,7 +141,7 @@ void restaurer_donnees(Etudiant VETU[], int *NBETU) {
     fread(VETU, sizeof(Etudiant), *NBETU, fichier);
 
     fclose(fichier);
-    printf("Données restaurées avec succès.\n");
+    printf("Donnees restaurees avec succes.\n");
 }
 
 void trier_par_nom(Etudiant VETU[], int NBETU) {

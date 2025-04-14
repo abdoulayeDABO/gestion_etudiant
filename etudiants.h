@@ -18,7 +18,8 @@ typedef struct {
 } Etudiant;
 
 
-void saisir_etudiants(Etudiant * VETU, int NBETU);
+
+void saisir_etudiants(Etudiant * VETU, int nb_ajout, int *NBETU);
 void afficher_resultats(Etudiant VETU[], int SUIVANT[], int DEB);
 void chainer_etudiants(Etudiant VETU[], int NBETU, int SUIVANT[], int *DEB);
 void afficher_etudiants(Etudiant VETU[], int NBETU);

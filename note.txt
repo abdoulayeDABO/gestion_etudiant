@@ -1,7 +1,0 @@
-Partie I:Partir de l'exercice 6 de la série 1 (Chainage par tableaux)
-Prévoir les fonctionnalités suivantes:
-Ajouter un étudiant
-Supprimer un étudiant
-Sauvegarder les donnée en fin de session (avant de quitter le programme)
-Restauration des donnée en début de session (au lancement du programme)
-Afficher les étudiants par ordre (alphabétique, mérite, aléatoire)  

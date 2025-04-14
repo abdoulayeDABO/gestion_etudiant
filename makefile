@@ -5,7 +5,7 @@ CC = gcc
 # CFLAGS = -Wall
 
 # Exécutable cible
-TARGET = programme.exe
+TARGET = programme
 
 # Fichiers source
 SOURCES = main.c etudiants.c
