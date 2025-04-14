@@ -13,6 +13,7 @@
 
 typedef struct {
     int numero;
+    char prenom[MAX_NOM_LENGTH];
     char nom[MAX_NOM_LENGTH];
     int note;
 } Etudiant;

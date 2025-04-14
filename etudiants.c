@@ -53,7 +53,7 @@ void afficher_resultats(Etudiant VETU[], int SUIVANT[], int DEB) {
 
     printf("Classement par ordre de mérite:\n");
     while (current != -1) {
-        printf("%d. Numero: %d, Nom: %s, Note: %d\n", rank, VETU[current].numero, VETU[current].nom, VETU[current].note);
+        printf("%d. Numero: %d, Prenom: %s, Nom: %s, Note: %d\n", rank, VETU[current].numero, VETU[current].prenom, VETU[current].nom, VETU[current].note);
         current = SUIVANT[current];
         rank++;
     }
@@ -67,9 +67,10 @@ void afficher_etudiants(Etudiant VETU[], int NBETU) {
     printf("-------------------\n");
     for (int i = 0; i < NBETU; i++) {
         printf("Etudiant %d:\n", i + 1);
-        printf("  Numero: %d\n", VETU[i].numero);
-        printf("  Nom: %s\n", VETU[i].nom);
-        printf("  Note: %d\n", VETU[i].note);
+        printf("  Numero:   %d\n", VETU[i].numero);
+        printf("  Prenom:   %s\n", VETU[i].prenom);
+        printf("  Nom:      %s\n", VETU[i].nom);
+        printf("  Note:     %d\n", VETU[i].note);
         printf("-------------------\n");
     }
 }
@@ -82,6 +83,8 @@ void ajouter_etudiant(Etudiant VETU[], int *NBETU) {
     printf("Entrez les informations du nouvel etudiant:\n");
     printf("Numero: ");
     scanf("%d", &VETU[*NBETU].numero);
+    printf("Prenom: ");
+    scanf("%s", VETU[*NBETU].prenom);
     printf("Nom: ");
     scanf("%s", VETU[*NBETU].nom);
     printf("Note: ");
